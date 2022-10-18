@@ -25,7 +25,7 @@ process_build_script_input group
 # module_load module1/ver module2/ver ..
 
 # build your software here
-cp -r . $INSTALL_DIR/
+cp -r lib $INSTALL_DIR/
 
 # add any additional LMOD command you want to be run here.. 
 ADDITIONAL_MODULEFILE_COMMANDS="setenv('BASH_UTILS_DIR', root_dir .. '/lib');" 

@@ -6,6 +6,12 @@ function module_load {
     module load $@
 }
 
+function get_commit_hash {
+    COMMIT_HASH=""
+    if [ -d .git ] && !  [ "`which git`" = "git not found" ]; then
+        COMMIT_HASH=`git log -n 1 --pretty=oneline | cut -d" " -f1`
+    fi
+}
 
 # This function reads the input arguments of a build script and use them to
 # define the INSTALL_DIR and MODULEFILE_DIR environment variables
@@ -73,6 +79,7 @@ function process_build_script_input {
             exit 1
         fi
     elif [ $PAWSEY_CLUSTER = "topaz" ]; then
+        module purge; module load bash-utils gcc/8.3.0 cascadelake;
         if [ "$1" = 'group' ]; then
             INSTALL_DIR="/group/director2183/software/centos7.6/development/$PROGRAM_NAME/$PROGRAM_VERSION"
             MODULEFILE_DIR="/group/director2183/software/centos7.6/modulefiles/$PROGRAM_NAME"
