@@ -43,7 +43,9 @@ if (mode() ~= 'whatis') then
     $MODULE_LOAD_COMMANDS
     prepend_path('PATH', root_dir .. '/bin')
     prepend_path('LD_LIBRARY_PATH', root_dir .. '/lib')
+    prepend_path('LD_LIBRARY_PATH', root_dir .. '/lib64')
     prepend_path('LIBRARY_PATH', root_dir .. '/lib')
+    prepend_path('LIBRARY_PATH', root_dir .. '/lib64')
     prepend_path('CPATH', root_dir .. '/include')
     $ADDITIONAL_MODULEFILE_COMMANDS
 end
@@ -92,16 +94,16 @@ function process_build_script_input {
         fi
     elif [ $PAWSEY_CLUSTER = "setonix" ]; then
         if [ "$1" = 'group' ]; then
-            INSTALL_DIR="/software/projects/director2183/setonix/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/setonix/modules/$PROGRAM_NAME"
+            INSTALL_DIR="/software/projects/director2183/setonix/development/$PROGRAM_NAME/$PROGRAM_VERSION"
+            MODULEFILE_DIR="/software/projects/director2183/setonix/modules/zen3/gcc/12.1.0/$PROGRAM_NAME"
         elif [ "$1" = 'user' ]; then
-            INSTALL_DIR="/software/projects/director2183/$USER/setonix/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/modules/$PROGRAM_NAME"
+            INSTALL_DIR="/software/projects/director2183/$USER/setonix/development/$PROGRAM_NAME/$PROGRAM_VERSION"
+            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/modules/zen3/gcc/12.1.0/$PROGRAM_NAME"
         elif [ "$1" != 'test' ]; then
             echo "Error parsing build script input: first parameter not recognised."
             exit 1
         fi
-
+    else
         echo "Error: cluster not recognised."
         exit 1
     fi
