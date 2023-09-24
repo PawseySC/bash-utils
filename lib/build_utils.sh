@@ -6,6 +6,11 @@ function module_load {
     module load $@
 }
 
+function print_run {
+	echo "Executing $@"
+	$@
+}
+
 function get_commit_hash {
     COMMIT_HASH=""
     if [ -d .git ] && !  [ "`which git`" = "git not found" ]; then
