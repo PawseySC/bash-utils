@@ -100,10 +100,10 @@ function process_build_script_input {
     elif [ $PAWSEY_CLUSTER = "setonix" ]; then
         if [ "$1" = 'group' ]; then
             INSTALL_DIR="/software/projects/director2183/setonix/2023.08/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/setonix/2023.08/modules/zen3/gcc/12.1.0/$PROGRAM_NAME"
+            MODULEFILE_DIR="/software/projects/director2183/setonix/2023.08/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
         elif [ "$1" = 'user' ]; then
             INSTALL_DIR="/software/projects/director2183/$USER/setonix/2023.08/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/2023.08/modules/zen3/gcc/12.1.0/$PROGRAM_NAME"
+            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/2023.08/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
         elif [ "$1" != 'test' ]; then
             echo "Error parsing build script input: first parameter not recognised."
             exit 1
