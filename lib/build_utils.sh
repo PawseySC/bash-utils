@@ -74,36 +74,13 @@ function process_build_script_input {
         exit 1
     fi
 
-    if [ $PAWSEY_CLUSTER = "mwa" ]; then
-        if [ $1 = 'group' ]; then
-            INSTALL_DIR="/astro/mwavcs/pacer_blink/software/sles12sp5/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/astro/mwavcs/pacer_blink/software/sles12sp5/modulefiles/$PROGRAM_NAME"
-        elif  [ $1 = 'user' ]; then
-            INSTALL_DIR="/astro/mwavcs/pacer_blink/$USER/software/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/astro/mwavcs/pacer_blink/$USER/software/modulefiles/$PROGRAM_NAME"
-        elif [ "$1" != 'test' ]; then
-            echo "Error parsing build script input: first parameter not recognised."
-            exit 1
-        fi
-    elif [ $PAWSEY_CLUSTER = "topaz" ]; then
-        module purge; module load bash-utils gcc/8.3.0 cascadelake;
+    if [ $PAWSEY_CLUSTER = "setonix" ]; then
         if [ "$1" = 'group' ]; then
-            INSTALL_DIR="/group/director2183/software/centos7.6/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/group/director2183/software/centos7.6/modulefiles/$PROGRAM_NAME"
+            INSTALL_DIR="/software/projects/director2183/setonix/2024.05/development/$PROGRAM_NAME/$PROGRAM_VERSION"
+            MODULEFILE_DIR="/software/projects/director2183/setonix/2024.05/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
         elif [ "$1" = 'user' ]; then
-            INSTALL_DIR="/group/director2183/$USER/software/centos7.6/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/group/director2183/$USER/software/centos7.6/modulefiles/$PROGRAM_NAME"
-        elif [ "$1" != 'test' ]; then
-            echo "Error parsing build script input: first parameter not recognised."
-            exit 1
-        fi
-    elif [ $PAWSEY_CLUSTER = "setonix" ]; then
-        if [ "$1" = 'group' ]; then
-            INSTALL_DIR="/software/projects/director2183/setonix/2023.08/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/setonix/2023.08/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
-        elif [ "$1" = 'user' ]; then
-            INSTALL_DIR="/software/projects/director2183/$USER/setonix/2023.08/development/$PROGRAM_NAME/$PROGRAM_VERSION"
-            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/2023.08/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
+            INSTALL_DIR="/software/projects/director2183/$USER/setonix/2024.05/development/$PROGRAM_NAME/$PROGRAM_VERSION"
+            MODULEFILE_DIR="/software/projects/director2183/$USER/setonix/2024.05/modules/zen3/gcc/12.2.0/$PROGRAM_NAME"
         elif [ "$1" != 'test' ]; then
             echo "Error parsing build script input: first parameter not recognised."
             exit 1
