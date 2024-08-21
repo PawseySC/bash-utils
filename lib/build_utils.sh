@@ -2,7 +2,7 @@
 # The following function loads a module and save its name in an environment variable that then will
 # be used to add those module loads in the modulefile itself.
 function module_load {
-    BU_LOADED_MODULES="$BU_LOADED_LODULES $@"
+    BU_LOADED_MODULES="$BU_LOADED_MODULES $@"
     module load $@
 }
 
